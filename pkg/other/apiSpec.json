@@ -1,0 +1,200 @@
+{
+    "openapi":"3.0.2",
+    "info": {
+      "title":"RestFull API CRUD",
+      "version":"1.0",
+      "description":"RestFull API CRUD"
+    },
+    "servers": [
+      {"url":"https://localhost:2000/v1"}
+    ],
+    "paths": {
+      "/customer":{
+        "get": {
+          "tags": ["get all Data customer"],
+          "description": "list all customer",
+          "responses": {
+            "200":{
+              "description": "success get all data",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "code":{
+                        "type": "number"
+                      },
+                      "status":{
+                        "type": "string"
+                      },
+                      "data":{
+                        "type": "array",
+                        "items":{
+                         "$ref":"#/components/schemas/customer"
+                          
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+         "post":{
+          "tags": ["Create Data Customer"],
+          "requestBody":{
+            "content": {
+              "application/json":{
+                "schema":{
+                  "type": "object",
+                  "properties": {
+                    "firstName":{
+                      "type": "string"
+                    },
+                    "lastName":{
+                      "type": "string"
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "responses": {
+            "200":{
+              "description": "Success Create Data Customer",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "code":{
+                        "type": "number"
+                      },
+                      "status":{
+                        "type": "string"
+                      },
+                      "data":{
+                        "type": "array",
+                        "items":{
+                         "$ref":"#/components/schemas/customer"
+                          
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+         }
+      },
+      "/customer/{customerId}":{
+        "get":{
+          "tags": ["Get Data Customer By Id "],
+          "description": "Get Data Customer By Id",
+          "parameters": [
+            {
+              "name": "CustomerId",
+              "in": "path",
+              "description": "CustomerId"
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "success get data by Id",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "code":{
+                        "type": "number"
+                      },
+                      "status":{
+                        "type": "string"
+                      },
+                      "data":{
+                        "type": "array",
+                        "items":{
+                         "$ref":"#/components/schemas/customer"
+                          
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "put":{
+          "tags": ["Update Data Customer"],
+          "description": "Update Data Customer",
+          "parameters": [
+            {
+              "name": "CustomerId",
+              "in": "path",
+              "description": "CustomerId"
+            },
+            {
+              "name": "FirstName",
+              "in": "path",
+              "description": "FirstName"
+            },
+            {
+              "name": "LastName",
+              "in": "path",
+              "description": "LastName"
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "success update data",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "code":{
+                        "type": "number"
+                      },
+                      "status":{
+                        "type": "string"
+                      },
+                      "data":{
+                        "type": "array",
+                        "items":{
+                         "$ref":"#/components/schemas/customer"
+                          
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+      
+    },
+    "components": {
+      "schemas": {
+        "customer":{
+          "type": "object",
+          "properties": {
+            "id":{
+              "type": "number"
+            },
+            "firstName":{
+              "type": "string"
+            },
+            "lastName":{
+              "type": "string"
+            }
+          }
+        }
+      }
+    }
+  }
