@@ -11,6 +11,9 @@
     "paths": {
       "/customer":{
         "get": {
+          "security":[{
+            "CategoryAuth":[]
+        }],
           "tags": ["get all Data customer"],
           "description": "list all customer",
           "responses": {
@@ -42,6 +45,9 @@
           }
         },
          "post":{
+          "security":[{
+            "CategoryAuth":[]
+        }],
           "tags": ["Create Data Customer"],
           "requestBody":{
             "content": {
@@ -91,10 +97,12 @@
       },
       "/customer/{customerId}":{
         "get":{
+          "security":[{
+            "CategoryAuth":[]
+        }],
           "tags": ["Get Data Customer By Id "],
           "description": "Get Data Customer By Id",
-          "parameters": [
-            {
+          "parameters": [{
               "name": "CustomerId",
               "in": "path",
               "description": "CustomerId"
@@ -129,6 +137,9 @@
           }
         },
         "put":{
+          "security":[{
+            "CategoryAuth":[]
+        }],
           "tags": ["Update Data Customer"],
           "description": "Update Data Customer",
           "parameters": [
@@ -175,11 +186,52 @@
               }
             }
           }
+        },
+        "delete":{
+          "security":[{
+            "CategoryAuth":[]
+        }],
+          "tags": ["Delete Data Customer By Id "],
+          "description": "Delete Data Customer By Id",
+          "parameters": [
+            {
+              "name": "CustomerId",
+              "in": "path",
+              "description": "CustomerId"
+            }
+          ],
+          "responses": {
+            "200":{
+              "description": "success Delete data by Id",
+              "content": {
+                "application/json":{
+                  "schema":{
+                    "type": "object",
+                    "properties": {
+                      "code":{
+                        "type": "number"
+                      },
+                      "status":{
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
         }
       }
       
     },
     "components": {
+      "securitySchemes": {
+        "CategoryAuth": {
+          "type": "apiKey",
+          "name": "x-api-key",
+          "in": "header"
+        }
+      },
       "schemas": {
         "customer":{
           "type": "object",
@@ -196,5 +248,6 @@
           }
         }
       }
+     
     }
   }

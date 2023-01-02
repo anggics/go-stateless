@@ -6,23 +6,23 @@ type Users struct {
 	Address string
 }
 
-func (u *Users) getName() string {
+func (u Users) GetName() string {
 	return u.Name
 }
 
-func (u *Users) getAge() int {
+func (u Users) GetAge() int {
 	return u.Age
 }
 
-func (u *Users) getAddress() string {
+func (u Users) GetAddress() string {
 	return u.Address
 }
 
 // method multiple return
 // GetUsers implements
 func (u Users) GetUsers() (string, int, string) {
-	name := u.getName()
-	age := u.getAge()
-	addreess := u.getAddress()
+	name := u.GetName()
+	age := u.GetAge()
+	addreess := u.GetAddress()
 	return name, age, addreess
 }
